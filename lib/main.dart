@@ -1,38 +1,51 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:m2/screens/detail/index.dart';
-import 'package:m2/screens/detail/update.dart';
-import 'package:m2/screens/home.dart';
-import 'package:m2/screens/profile/index.dart';
-import 'package:m2/screens/profile/update.dart';
+import 'package:m2/routes.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
-final Map<String, Widget Function(BuildContext)> routes = {
-  '/home': (context) => const MyHomePage(title: 'Flutter'),
-  '/detail': (context) => const DetailScreen(),
-  '/detail/update': (context) => const UpdateDetailScreen(),
-  '/profile': (context) => const ProfileScreen(),
-  '/profile/update': (context) => const UpdateProfileScreen(),
-  '/other': (context) => Scaffold(
-        appBar: AppBar(),
-      ),
-};
-
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+
+  final _initialization = Firebase.initializeApp();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      debugShowCheckedModeBanner: false,
-      routes: routes,
-      initialRoute: '/home',
+    return FutureBuilder(
+      future: _initialization,
+      builder: ((context, snapshot) {
+        if (snapshot.hasError) {
+          return const MaterialApp(
+            home: Scaffold(
+              body: SafeArea(
+                child: Center(
+                  child: Text('Error'),
+                ),
+              ),
+            ),
+          );
+        }
+
+        if (snapshot.connectionState == ConnectionState.done) {
+          return MaterialApp(
+            title: 'Flutter',
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+            ),
+            debugShowCheckedModeBanner: false,
+            routes: routes,
+            initialRoute:
+                FirebaseAuth.instance.currentUser != null ? '/' : '/register',
+          );
+        }
+
+        return Container();
+      }),
     );
   }
 }

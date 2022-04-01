@@ -99,6 +99,24 @@
       // Service workers not supported. Just drop the <script> tag.
       loadMainDartJs();
     }
+
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyB6EgNUlqgr5-BjO6j874bO_G_hN8wKzVc",
+      authDomain: "cours-fa0ba.firebaseapp.com",
+      projectId: "cours-fa0ba",
+      storageBucket: "cours-fa0ba.appspot.com",
+      messagingSenderId: "288849017704",
+      appId: "1:288849017704:web:ac9777e8d7f7000b5474dd"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
   </script>
 </body>
 </html>

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "288849017704",
+    "project_id": "cours-fa0ba",
+    "storage_bucket": "cours-fa0ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:288849017704:android:538275f4651fb6965474dd",
+        "android_client_info": {
+          "package_name": "com.example.cours"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "288849017704-hmrmm1lkndlno9dh7ehmr2qof3rrkuop.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCW0C3Jw-CiRv1NZBaC8XuVfPhgNqAtJDU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "288849017704-hmrmm1lkndlno9dh7ehmr2qof3rrkuop.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "288849017704-akmrdba21dkhnmfe5bas51obf4c7iftg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.cours"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
